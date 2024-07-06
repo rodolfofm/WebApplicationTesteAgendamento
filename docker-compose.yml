@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  webapplicationtesteagendamento:
+    image: ${DOCKER_REGISTRY-}webapplicationtesteagendamento
+    build:
+      context: WebApplicationTesteAgendamento
+      dockerfile: Dockerfile
+  banco-agendamento:
+    image: ${DOCKER_REGISTRY-}banco-agendamento
+    container_name: agendamento-postgres
+    build: 
+        context: .
+        dockerfile: postgres/Dockerfile
+    environment:
+        POSTGRES_PASSWORD: "postgres"
+#     LANG: 'pt_BR.UTF-8'
+#     LANGUAGE: 'pt_BR.UTF-8'
+#     LC_ALL: 'pt_BR.UTF-8'
+#     LC_COLLATE: 'pt_BR.UTF-8'
+#     LC_CTYPE: 'pt_BR.UTF-8'
+    ports:
+        - "4432:5432"
+    volumes:
+        - .\data-postgres:/var/lib/postgresql/data   
+        - .\postgres\tables_postgres.sql:/docker-entrypoint-initdb.d/tables_postgres.sql

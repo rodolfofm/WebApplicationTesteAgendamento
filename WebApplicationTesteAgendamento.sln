@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTesteAgendamento", "WebApplicationTesteAgendamento\WebApplicationTesteAgendamento.csproj", "{AAC8D140-1EE2-45A3-96D4-7A97A40B7131}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6ED63844-D39E-4C0C-B89A-A26DBD0A7844}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "banco", "banco", "{CE30D46B-4CF3-4B4E-927A-BB3A1705E479}"
+	ProjectSection(SolutionItems) = preProject
+		postgres\Dockerfile = postgres\Dockerfile
+		postgres\tables_postgres.sql = postgres\tables_postgres.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAC8D140-1EE2-45A3-96D4-7A97A40B7131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC8D140-1EE2-45A3-96D4-7A97A40B7131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC8D140-1EE2-45A3-96D4-7A97A40B7131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC8D140-1EE2-45A3-96D4-7A97A40B7131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ED63844-D39E-4C0C-B89A-A26DBD0A7844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED63844-D39E-4C0C-B89A-A26DBD0A7844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED63844-D39E-4C0C-B89A-A26DBD0A7844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED63844-D39E-4C0C-B89A-A26DBD0A7844}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45503FF0-0DC8-4C30-A710-35EFEDD92294}
+	EndGlobalSection
+EndGlobal

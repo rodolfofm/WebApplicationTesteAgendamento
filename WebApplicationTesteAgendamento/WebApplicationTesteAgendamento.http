@@ -1,0 +1,47 @@
+@WebApplicationTesteAgendamento_HostAddress = http://localhost:62262
+
+DELETE {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/unschedule
+Accept: application/json
+Content-Type: application/json
+
+"api 1"
+###
+
+POST {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/schedule
+Accept: application/json
+Content-Type: application/json
+
+{
+  "jobId": "banco 1",
+  "jobType": "WebApplicationTesteAgendamento.Tasks.BancoJob",
+  "cronExpression": "0/5 * * * * ?",
+  "jobData": {
+    "host": "1.1.1.1",
+    "usuario": "string",
+    "senha": "string",
+    "banco": "teste"
+  }
+}
+###
+
+POST {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/schedule
+Accept: application/json
+Content-Type: application/json
+
+{
+  "jobId": "api 1",
+  "jobType": "WebApplicationTesteAgendamento.Tasks.ApiJob",
+  "cronExpression": "0/10 * * * * ?",
+  "jobData": {
+    "url": "http://teste",
+    "usuario": "string",
+    "senha": "string",
+    "method": "GET"
+  }
+}
+###
+
+GET {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/list
+Accept: application/json
+
+###
