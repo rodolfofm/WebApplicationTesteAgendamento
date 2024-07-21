@@ -1,4 +1,4 @@
-@WebApplicationTesteAgendamento_HostAddress = http://localhost:62262
+@WebApplicationTesteAgendamento_HostAddress = http://localhost:61180
 
 DELETE {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/unschedule
 Accept: application/json
@@ -12,18 +12,31 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "jobId": "banco 1",
+  "jobId": "banco postgres 1",
   "jobType": "WebApplicationTesteAgendamento.Tasks.BancoJob",
   "cronExpression": "0/5 * * * * ?",
   "jobData": {
-    "host": "1.1.1.1",
-    "usuario": "string",
-    "senha": "string",
-    "banco": "teste"
+    "connectionString": "Host=banco-teste-postgresql;Port=5432;Database=postgres;Username=postgres;Password=postgres",
+    "dbType": "Postgres",
+    "query": "select sum(valor) as valor from teste"
   }
 }
 ###
+POST {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/schedule
+Accept: application/json
+Content-Type: application/json
 
+{
+  "jobId": "banco mysql 1",
+  "jobType": "WebApplicationTesteAgendamento.Tasks.BancoJob",
+  "cronExpression": "0/7 * * * * ?",
+  "jobData": {
+    "connectionString": "Host=banco-teste-mysql;Port=3306;Database=teste;Username=root;Password=15975328",
+    "dbType": "MySql",
+    "query": "select sum(valor) as valor from teste.teste"
+  }
+}
+###
 POST {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/schedule
 Accept: application/json
 Content-Type: application/json

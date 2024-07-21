@@ -6,21 +6,55 @@ services:
     build:
       context: WebApplicationTesteAgendamento
       dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    depends_on:
+      - banco-agendamento
+      - banco-teste-postgresql
+      - banco-teste-mysql
+
   banco-agendamento:
     image: ${DOCKER_REGISTRY-}banco-agendamento
     container_name: agendamento-postgres
     build: 
         context: .
-        dockerfile: postgres/Dockerfile
+        dockerfile: agendamento-banco/Dockerfile
     environment:
         POSTGRES_PASSWORD: "postgres"
-#     LANG: 'pt_BR.UTF-8'
-#     LANGUAGE: 'pt_BR.UTF-8'
-#     LC_ALL: 'pt_BR.UTF-8'
-#     LC_COLLATE: 'pt_BR.UTF-8'
-#     LC_CTYPE: 'pt_BR.UTF-8'
     ports:
         - "4432:5432"
     volumes:
-        - .\data-postgres:/var/lib/postgresql/data   
-        - .\postgres\tables_postgres.sql:/docker-entrypoint-initdb.d/tables_postgres.sql
+        - .\agendamento-banco\data-postgres:/var/lib/postgresql/data   
+        - .\agendamento-banco\tables_postgres.sql:/docker-entrypoint-initdb.d/tables_postgres.sql
+
+  banco-teste-postgresql:
+    image: ${DOCKER_REGISTRY-}banco-teste-postgresql
+    container_name: banco-teste-postgresql
+    build: 
+        context: .
+        dockerfile: banco-teste/postgres/Dockerfile
+    environment:
+        POSTGRES_PASSWORD: "postgres"
+    ports:
+        - "3432:5432"
+    volumes:
+        - .\banco-teste\postgres\data-postgres-teste:/var/lib/postgresql/data   
+        - .\banco-teste\postgres\tables.sql:/docker-entrypoint-initdb.d/tables.sql
+
+  banco-teste-mysql:
+    image: ${DOCKER_REGISTRY-}banco-teste-mysql
+    container_name: banco-teste-mysql
+    build: 
+        context: .
+        dockerfile: banco-teste/mysql/Dockerfile
+    environment:
+        MYSQL_ROOT_PASSWORD: "15975328"
+        MYSQL_DATABASE: "teste"
+        MYSQL_USER: 'teste'
+        MYSQL_PASSWORD: '15975328'
+    ports:
+        - "4306:3306"
+    volumes:
+        - .\banco-teste\mysql\data-mysql-teste:/var/lib/mysql
+        - .\banco-teste\mysql\tables.sql:/docker-entrypoint-initdb.d/tables.sql
