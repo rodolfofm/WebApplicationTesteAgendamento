@@ -9,6 +9,10 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtracaoService", "ExtracaoService\ExtracaoService.csproj", "{C92E945E-B582-46C7-87B8-EFE76780A388}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppExecRuntime", "ConsoleAppExecRuntime\ConsoleAppExecRuntime.csproj", "{309AC5AB-1BBC-4B7D-8210-9072B34152CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtracaoCompiladorExecucao", "ExtracaoCompiladorExecucao\ExtracaoCompiladorExecucao.csproj", "{F46EAD1B-D9BD-4001-B169-DC9EA452708E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{C92E945E-B582-46C7-87B8-EFE76780A388}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C92E945E-B582-46C7-87B8-EFE76780A388}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C92E945E-B582-46C7-87B8-EFE76780A388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{309AC5AB-1BBC-4B7D-8210-9072B34152CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{309AC5AB-1BBC-4B7D-8210-9072B34152CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{309AC5AB-1BBC-4B7D-8210-9072B34152CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{309AC5AB-1BBC-4B7D-8210-9072B34152CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F46EAD1B-D9BD-4001-B169-DC9EA452708E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F46EAD1B-D9BD-4001-B169-DC9EA452708E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F46EAD1B-D9BD-4001-B169-DC9EA452708E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F46EAD1B-D9BD-4001-B169-DC9EA452708E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

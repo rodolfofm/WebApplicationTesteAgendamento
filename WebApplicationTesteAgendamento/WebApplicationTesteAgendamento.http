@@ -1,10 +1,10 @@
-@WebApplicationTesteAgendamento_HostAddress = http://localhost:61180
+@WebApplicationTesteAgendamento_HostAddress = http://localhost:56104
 
 DELETE {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/unschedule
 Accept: application/json
 Content-Type: application/json
 
-"api 1"
+"banco postgres 1"
 ###
 
 POST {{WebApplicationTesteAgendamento_HostAddress}}/api/Scheduler/schedule
@@ -18,7 +18,8 @@ Content-Type: application/json
   "jobData": {
     "connectionString": "Host=banco-teste-postgresql;Port=5432;Database=postgres;Username=postgres;Password=postgres",
     "dbType": "Postgres",
-    "query": "select sum(valor) as valor from teste"
+    "query": "select valor as valor from teste",
+    "codigoFonte": "using System; using System.Collections; using System.Collections.Generic; using System.Linq; using System.Text; using System.Text.Json;  public object? ObterResultadoJson(string json)  {  var objetos = JsonSerializer.Deserialize<List<Dictionary<string, double>>>(json);  double soma = objetos.Sum(obj => obj[\"valor\"]);  return soma;  } "
   }
 }
 ###
@@ -33,7 +34,7 @@ Content-Type: application/json
   "jobData": {
     "connectionString": "Host=banco-teste-mysql;Port=3306;Database=teste;Username=root;Password=15975328",
     "dbType": "MySql",
-    "query": "select sum(valor) as valor from teste.teste"
+    "query": "select sum(valor) as valor from teste.teste",
   }
 }
 ###

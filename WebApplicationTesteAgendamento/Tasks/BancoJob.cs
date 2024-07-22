@@ -1,4 +1,5 @@
-﻿using ExtracaoService;
+﻿using ExtracaoCompiladorExecucao.Compiler;
+using ExtracaoService;
 using Quartz;
 
 namespace WebApplicationTesteAgendamento.Tasks
@@ -16,6 +17,22 @@ namespace WebApplicationTesteAgendamento.Tasks
             await Console.Out.WriteLineAsync($"Executando {this} {context.FireInstanceId}");
             await Console.Out.WriteLineAsync($"Executando {this} {context.JobDetail.Key} {context.JobDetail.Description}");
             await Console.Out.WriteLineAsync($"Executando {this} {context.JobDetail.Key} retorno: {retorno}");
+
+            var compiler = new Compiler();
+            var result = await compiler.CompileAsync(data.GetString("codigoFonte"));
+
+            var resultado = result.ObterResultadoJson(retorno);
+            if (!resultado.Item2.Any())
+            {
+                await Console.Out.WriteLineAsync($"Executando {this} {context.JobDetail.Key} A soma dos valores é: {resultado.Item1}");
+            }
+            else
+            {
+                foreach (var item in resultado.Item2)
+                {
+                    await Console.Out.WriteLineAsync($"Erro {this} {context.JobDetail.Key} {item}");
+                }
+            }
         }
         private DatabaseType ConvertStringToDatabaseType(string dataType)
         {

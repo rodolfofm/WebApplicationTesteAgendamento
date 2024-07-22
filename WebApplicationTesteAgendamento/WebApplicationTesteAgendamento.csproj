@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExtracaoCompiladorExecucao\ExtracaoCompiladorExecucao.csproj" />
     <ProjectReference Include="..\ExtracaoService\ExtracaoService.csproj" />
   </ItemGroup>
 
